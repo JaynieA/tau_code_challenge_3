@@ -1,19 +1,43 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title>JEN Stack Code Challenge</title>
     <script src="vendors/jquery-3.0.0.min.js" charset="utf-8"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="scripts/cc3.js" charset="utf-8"></script>
-  </head>
-  <body>
-    <h1>JEN Stack Code Challenge</h1>
-    <input type="text" id="whoseJokeIn" placeholder="whose joke" />
-    <input type="text" id="questionIn" placeholder="question" />
-    <input type="text" id="punchlineIn" placeholder="punchline" />
-    <button id="addJokeButton">Add Joke</button>
-    <h2>Jokes:</h2>
-    <div id="outputDiv">
+</head>
+
+<body>
+
+    <div class="container">
+        <h1 class="text-center">JEN Stack Code Challenge</h1>
+        <form class="form-inline text-center">
+            <div class="form-group">
+                <label for="whoseJokeIn">Whose Joke:</label>
+                <input type="text" id="whoseJokeIn" placeholder="whose joke" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label for="questionIn">Question:</label>
+                <input type="text" id="questionIn" placeholder="question" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label for="punchlineIn">Punch Line:</label>
+                <input type="text" id="punchlineIn" placeholder="punchline" class="form-control"/>
+            </div>
+            <button type="button" id="addJokeButton">Add Joke</button>
+        </form>
+
+        <h2 class="text-center">Jokes:</h2>
+        <div id="outputDiv"></div>
     </div>
-  </body>
+
+</body>
+
 </html>

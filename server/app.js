@@ -28,7 +28,7 @@ jokes = [
     jokeQuestion: "Why should you not play cards in the forest?",
     punchLine: "Too many Cheetahs"
   }
-];
+]; // end jokes
 
 // spin up server
 app.listen( 3333, function(){
@@ -44,12 +44,12 @@ app.get( '/', function( req, res ){
 app.get('/getJokes', function(req, res){
   console.log(jokes);
   res.send(jokes);
-});
+}); // end /getJokes
 
 app.post('/postJoke', function(req, res){
   console.log('post successful. Req.body:', req.body);
   jokes.push(req.body);
   res.send(jokes);
-});
+}); // end /postJoke
 
 app.use( express.static( 'public' ) );

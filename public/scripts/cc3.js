@@ -27,10 +27,10 @@ var getJokes = function(){
     success: function(response){
       console.log('get success. response:', response);
       displayOnDOM(response);
-    },
+    }, // end success
     error: function(err){
       console.log('error on GET.', err);
-    }
+    } // end error
   }); // end ajax GET
 }; // end getJokes
 
@@ -54,9 +54,9 @@ var sendJoke = function(object){
     success: function(response){
       console.log('post success. Response', response);
       displayOnDOM(response);
-    },
+    }, // end success
     error: function(err){
       console.log('post error:', err);
-    }
+    } // end error
   }); // end ajax POST
 }; // end sendJoke
