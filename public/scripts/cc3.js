@@ -8,11 +8,7 @@ $( document ).ready( function(){
     url: '/getJokes',
     success: function(response){
       console.log('get success. response:', response);
-      for (var i = 0; i < response.length; i++) {
-        console.log(response[i].jokeQuestion);
-        console.log(response[i].punchLine);
-        console.log(response[i].whoseJoke);
-      }
+      displayOnDOM(response);
     },
     error: function(err){
       console.log('error on GET.', err);
@@ -25,3 +21,13 @@ $( document ).ready( function(){
 
 
 }); // end doc ready
+
+var displayOnDOM = function(array){
+  for (var i = 0; i < array.length; i++) {
+    $('#outputDiv').append('<div class="joke"></div>');
+    $el = $('#outputDiv').children().last();
+    $el.append('<p>'+ array[i].jokeQuestion +'</p>');
+    $el.append('<p>'+ array[i].punchLine +'</p>');
+    $el.append('<p>'+ array[i].whoseJoke +'</p>');
+  }
+};
