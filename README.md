@@ -1,10 +1,10 @@
 ##Node Express jQuery Code Challenge
 
 ### Objectives
-- Initialize and spin up a server side node/express application.
-- Send requests to the server from both the browser and using ajax in the client side script.
-- Display response on the DOM.
-- Demonstrate the separation of logic between the client and the server.
+* [x] Initialize and spin up a server side node/express application.
+* [x] Send requests to the server from both the browser and using ajax in the client side script.
+* [x] Display response on the DOM.
+* [x] Demonstrate the separation of logic between the client and the server.
 
 ### The Joke Book
 
@@ -28,7 +28,7 @@ To get started, fork this repo and clone it to your machine.
 
 Overview
 --------
-* all jokes should be displayed on the DOM below the inputs
-* the user should be able to add jokes using the input form
+* [x] all jokes should be displayed on the DOM below the inputs
+* [x] the user should be able to add jokes using the input form
 
 Remember to work in small increments and test often. If you want to take things further, first push the working basic mode to your github and update it after.
