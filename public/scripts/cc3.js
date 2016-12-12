@@ -17,11 +17,19 @@ $( document ).ready( function(){
 
   $( '#addJokeButton' ).on( 'click', function(){
     console.log( 'addJokeButton on click');
-    sendJoke();
+    var objectToSend = {
+      jokeQuestion: $('#questionIn').val(),
+      punchLine: $('#punchlineIn').val(),
+      whoseJoke: $('#whoseJokeIn').val()
+    };
+    sendJoke(objectToSend);
   }); // end addJokeButton on click
+
+
 }); // end doc ready
 
 var sendJoke = function(object){
+  console.log('in sendJoke');
   $.ajax({
     type: 'POST',
     url: '/postJoke',
