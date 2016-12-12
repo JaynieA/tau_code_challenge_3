@@ -17,28 +17,27 @@ $( document ).ready( function(){
 
   $( '#addJokeButton' ).on( 'click', function(){
     console.log( 'addJokeButton on click');
+    sendJoke();
   }); // end addJokeButton on click
+}); // end doc ready
 
+var sendJoke = function(object){
   $.ajax({
     type: 'POST',
     url: '/postJoke',
-    data: {
-      jokeQuestion: "why did the chicken?",
-      punchLine: "idk",
-      whoseJoke: 'me'
-    },
+    data: object,
     success: function(response){
       console.log('post success. Response', response);
+      displayOnDOM(response);
     },
     error: function(err){
       console.log('post error:', err);
     }
   });
-
-
-}); // end doc ready
+};
 
 var displayOnDOM = function(array){
+  $('#outputDiv').html('');
   for (var i = 0; i < array.length; i++) {
     $('#outputDiv').append('<div class="joke"></div>');
     $el = $('#outputDiv').children().last();
