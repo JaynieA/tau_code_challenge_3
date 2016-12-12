@@ -1,17 +1,12 @@
 $( document ).ready( function(){
-  getJokes();
-  //event listener
-  $( '#addJokeButton' ).on( 'click', function(){
-    console.log( 'addJokeButton on click');
-    //make joke object
-    var objectToSend = {
-      jokeQuestion: $('#questionIn').val(),
-      punchLine: $('#punchlineIn').val(),
-      whoseJoke: $('#whoseJokeIn').val()
-    };
-    sendJoke(objectToSend);
-  }); // end addJokeButton on click
+  init();
 }); // end doc ready
+
+var init = function(){
+  console.log('in init');
+  getJokes();
+  $( '#addJokeButton' ).on( 'click', makeAndSubmitJoke);
+}; // end init
 
 var displayOnDOM = function(array){
   $('#outputDiv').html('');
@@ -21,10 +16,11 @@ var displayOnDOM = function(array){
     $el.append('<p>'+ array[i].jokeQuestion +'</p>');
     $el.append('<p>'+ array[i].punchLine +'</p>');
     $el.append('<p>'+ array[i].whoseJoke +'</p>');
-  }
+  } // end for
 }; // end displayOnDOM
 
 var getJokes = function(){
+  console.log('in getJokes');
   $.ajax({
     type: 'GET',
     url: '/getJokes',
@@ -35,8 +31,19 @@ var getJokes = function(){
     error: function(err){
       console.log('error on GET.', err);
     }
-  });
+  }); // end ajax GET
 }; // end getJokes
+
+var makeAndSubmitJoke = function(){
+  console.log('in makeAndSubmitJoke');
+  //make joke object
+  var objectToSend = {
+    jokeQuestion: $('#questionIn').val(),
+    punchLine: $('#punchlineIn').val(),
+    whoseJoke: $('#whoseJokeIn').val()
+  }; // end objectToSend
+  sendJoke(objectToSend);
+}; // end makeAndSubmitJoke
 
 var sendJoke = function(object){
   console.log('in sendJoke');
@@ -51,5 +58,5 @@ var sendJoke = function(object){
     error: function(err){
       console.log('post error:', err);
     }
-  });
+  }); // end ajax POST
 }; // end sendJoke
