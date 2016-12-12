@@ -1,9 +1,10 @@
+var logs = false;
 $( document ).ready( function(){
   init();
 }); // end doc ready
 
 var init = function(){
-  console.log('in init');
+  if (logs) console.log('in init');
   getJokes();
   $( '#addJokeButton' ).on( 'click', makeAndSubmitJoke);
 }; // end init
@@ -22,22 +23,22 @@ var displayOnDOM = function(array){
 }; // end displayOnDOM
 
 var getJokes = function(){
-  console.log('in getJokes');
+  if (logs) console.log('in getJokes');
   $.ajax({
     type: 'GET',
     url: '/getJokes',
     success: function(response){
-      console.log('get success. response:', response);
+      if (logs) console.log('get success. response:', response);
       displayOnDOM(response);
     }, // end success
     error: function(err){
-      console.log('error on GET.', err);
+      if (logs) console.log('error on GET.', err);
     } // end error
   }); // end ajax GET
 }; // end getJokes
 
 var makeAndSubmitJoke = function(){
-  console.log('in makeAndSubmitJoke');
+  if (logs) console.log('in makeAndSubmitJoke');
   //clear input values
   $('input').val('');
   //make joke object
@@ -50,17 +51,17 @@ var makeAndSubmitJoke = function(){
 }; // end makeAndSubmitJoke
 
 var sendJoke = function(object){
-  console.log('in sendJoke');
+  if (logs) console.log('in sendJoke');
   $.ajax({
     type: 'POST',
     url: '/postJoke',
     data: object,
     success: function(response){
-      console.log('post success. Response', response);
+      if (logs) console.log('post success. Response', response);
       displayOnDOM(response);
     }, // end success
     error: function(err){
-      console.log('post error:', err);
+      if (logs) console.log('post error:', err);
     } // end error
   }); // end ajax POST
 }; // end sendJoke
