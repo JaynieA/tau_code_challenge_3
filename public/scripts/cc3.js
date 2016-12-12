@@ -11,11 +11,13 @@ var init = function(){
 var displayOnDOM = function(array){
   $('#outputDiv').html('');
   for (var i = 0; i < array.length; i++) {
-    $('#outputDiv').append('<div class="joke"></div>');
-    $el = $('#outputDiv').children().last();
-    $el.append('<p>'+ array[i].jokeQuestion +'</p>');
-    $el.append('<p>'+ array[i].punchLine +'</p>');
-    $el.append('<p>'+ array[i].whoseJoke +'</p>');
+    $('#outputDiv').append('<div class="col-sm-4"></div>');
+    $wrapper = $('#outputDiv').children().last();
+    $wrapper.append('<div class="joke"></div>');
+    $el = $wrapper.children().last();
+    $el.append('<p><span class="indicator">Q: </span>'+ array[i].jokeQuestion +'</p>');
+    $el.append('<p><span class="indicator">A: </span>'+ array[i].punchLine +'</p>');
+    $el.append('<p><span class="indicator">&rarr; </span>'+ array[i].whoseJoke +'</p>');
   } // end for
 }; // end displayOnDOM
 
@@ -36,6 +38,8 @@ var getJokes = function(){
 
 var makeAndSubmitJoke = function(){
   console.log('in makeAndSubmitJoke');
+  //clear input values
+  $('input').val('');
   //make joke object
   var objectToSend = {
     jokeQuestion: $('#questionIn').val(),
