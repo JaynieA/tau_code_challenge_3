@@ -1,8 +1,30 @@
-console.log( 'js' );
-
 $( document ).ready( function(){
-  console.log( 'JQ' );
+  getJokes();
+  //event listener
+  $( '#addJokeButton' ).on( 'click', function(){
+    console.log( 'addJokeButton on click');
+    //make joke object
+    var objectToSend = {
+      jokeQuestion: $('#questionIn').val(),
+      punchLine: $('#punchlineIn').val(),
+      whoseJoke: $('#whoseJokeIn').val()
+    };
+    sendJoke(objectToSend);
+  }); // end addJokeButton on click
+}); // end doc ready
 
+var displayOnDOM = function(array){
+  $('#outputDiv').html('');
+  for (var i = 0; i < array.length; i++) {
+    $('#outputDiv').append('<div class="joke"></div>');
+    $el = $('#outputDiv').children().last();
+    $el.append('<p>'+ array[i].jokeQuestion +'</p>');
+    $el.append('<p>'+ array[i].punchLine +'</p>');
+    $el.append('<p>'+ array[i].whoseJoke +'</p>');
+  }
+}; // end displayOnDOM
+
+var getJokes = function(){
   $.ajax({
     type: 'GET',
     url: '/getJokes',
@@ -14,19 +36,7 @@ $( document ).ready( function(){
       console.log('error on GET.', err);
     }
   });
-
-  $( '#addJokeButton' ).on( 'click', function(){
-    console.log( 'addJokeButton on click');
-    var objectToSend = {
-      jokeQuestion: $('#questionIn').val(),
-      punchLine: $('#punchlineIn').val(),
-      whoseJoke: $('#whoseJokeIn').val()
-    };
-    sendJoke(objectToSend);
-  }); // end addJokeButton on click
-
-
-}); // end doc ready
+}; // end getJokes
 
 var sendJoke = function(object){
   console.log('in sendJoke');
@@ -42,15 +52,4 @@ var sendJoke = function(object){
       console.log('post error:', err);
     }
   });
-};
-
-var displayOnDOM = function(array){
-  $('#outputDiv').html('');
-  for (var i = 0; i < array.length; i++) {
-    $('#outputDiv').append('<div class="joke"></div>');
-    $el = $('#outputDiv').children().last();
-    $el.append('<p>'+ array[i].jokeQuestion +'</p>');
-    $el.append('<p>'+ array[i].punchLine +'</p>');
-    $el.append('<p>'+ array[i].whoseJoke +'</p>');
-  }
-};
+}; // end sendJoke
