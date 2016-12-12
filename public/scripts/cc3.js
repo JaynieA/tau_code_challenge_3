@@ -19,6 +19,22 @@ $( document ).ready( function(){
     console.log( 'addJokeButton on click');
   }); // end addJokeButton on click
 
+  $.ajax({
+    type: 'POST',
+    url: '/postJoke',
+    data: {
+      jokeQuestion: "why did the chicken?",
+      punchLine: "idk",
+      whoseJoke: 'me'
+    },
+    success: function(response){
+      console.log('post success. Response', response);
+    },
+    error: function(err){
+      console.log('post error:', err);
+    }
+  });
+
 
 }); // end doc ready
 

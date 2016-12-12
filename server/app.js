@@ -46,4 +46,10 @@ app.get('/getJokes', function(req, res){
   res.send(jokes);
 });
 
+app.post('/postJoke', function(req, res){
+  console.log('post successful. Req.body:', req.body);
+  jokes.push(req.body);
+  res.send(jokes);
+});
+
 app.use( express.static( 'public' ) );
